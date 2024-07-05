@@ -26,7 +26,6 @@ const shareCode = async (req, res) => {
 const getCode = async (req, res) => {
     let codeID = req.params.id;
     let code = await codeModel.find({uniqueID: codeID}).exec();
-
     if(code.length === 0){
         res.statusCode = 404;
         res.send('Code not found!');

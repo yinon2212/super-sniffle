@@ -27,7 +27,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origins: ['http://localhost:3000/'],
+    origins: ['http://localhost:3000/', 'https://codeshare-frontend-yinon.onrender.com/'],
     methods: ['GET', 'POST']
   }
 });
@@ -41,12 +41,11 @@ io.on('connection', (socket => {
   });
 
   socket.on('join_room', (room) => {
-    console.log('Joined to room: ====> ', room);
+    console.log('Join roon: ', room);
     socket.join(room);
   });
 
   socket.on('leave_room', (room) => {
-    console.log('Leaving to room: ====> ', room);
     socket.leave(room);
   });
 
