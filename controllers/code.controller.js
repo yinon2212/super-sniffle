@@ -4,7 +4,7 @@ const uniqid = require('uniqid');
 
 const updateCode = async (data) => {
     let filter = {uniqueID: data.codeID};
-    let update = {code: data.newCode};
+    let update = {code: data.newCode, lan: data.lan};
     let updatedCode = await codeModel.findOneAndUpdate(filter, update);
     
     updatedCode = await codeModel.findOne(filter);

@@ -45,10 +45,15 @@ io.on('connection', (socket => {
     socket.join(room);
   });
 
+  socket.on('leave_room', (room) => {
+    console.log('Leaving to room: ====> ', room);
+    socket.leave(room);
+  });
+
   socket.on('change_code', (data) => {
-    //data: {newCode: string, codeID: string}
+    //data: {newCode: string, codeID: string, lan: string}
     CodeController.updateCode(data);
-    socket.to(data.codeID).emit('recieve_code_changes', {newCode: data.newCode});
+    socket.to(data.codeID).emit('recieve_code_changes', {data});
   });
 }));
 
