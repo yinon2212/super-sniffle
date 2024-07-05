@@ -12,7 +12,7 @@ const app = express();
 const PORT = 5000;
 
 try {
-    mongoose.connect('mongodb://127.0.0.1:27017/codeShareDB');
+    mongoose.connect(process.env.MONGODB_URL);
 } catch (error) {
   console.log(error);
 }
